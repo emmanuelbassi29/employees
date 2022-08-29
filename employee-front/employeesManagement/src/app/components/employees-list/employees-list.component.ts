@@ -1,4 +1,4 @@
-import { employeeInterface } from './../interfaces/employee.interface';
+import { employeeInterface } from '../../interfaces/employee.interface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
