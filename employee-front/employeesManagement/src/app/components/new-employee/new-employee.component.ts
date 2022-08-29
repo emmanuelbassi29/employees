@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-new-employee',
@@ -17,12 +18,15 @@ export class NewEmployeeComponent implements OnInit {
     salary: [0],
     department: ['']
   })
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
   }
 
   addEmployee(){
     console.log(this.newFormEmployee.value)
+       this.employeeService.addEmployee(this.newFormEmployee.value).subscribe(employee => {
+        console.log(employee)
+       })
   }
 }
