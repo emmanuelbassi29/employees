@@ -26,5 +26,19 @@ namespace EmployeesManagement.Controllers
             }
             return Ok(employee);
         }
+
+        [HttpPost]
+        [Route("new")]
+        public IActionResult AddEmployee([FromBody] Employee newEmployee) 
+        {   
+            newEmployee.Id = Guid.NewGuid();
+            Employees.Add(newEmployee);
+            return Ok(Employees);
+        
+        }
+
+
+
+
     }
 }
