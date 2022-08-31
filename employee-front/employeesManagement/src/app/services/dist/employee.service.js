@@ -11,10 +11,16 @@ var core_1 = require("@angular/core");
 var EmployeeService = /** @class */ (function () {
     function EmployeeService(http) {
         this.http = http;
-        this.url = 'https://localhost:7251/employees/';
+        this.url = 'https://localhost:7001/api/employees/';
     }
     EmployeeService.prototype.addEmployee = function (employee) {
         return this.http.post(this.url + "new", employee);
+    };
+    EmployeeService.prototype.getEmployees = function () {
+        return this.http.get(this.url);
+    };
+    EmployeeService.prototype.getEmployee = function (id) {
+        return this.http.get(this.url + id);
     };
     EmployeeService = __decorate([
         core_1.Injectable({

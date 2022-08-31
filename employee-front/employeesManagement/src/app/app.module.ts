@@ -7,20 +7,23 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import { NewEmployeeComponent } from './components/new-employee/new-employee.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ChangeEmployeeComponent} from './components/change-employee/change-employee.component'
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     EmployeesListComponent,
-    NewEmployeeComponent
+    NewEmployeeComponent,
+    ChangeEmployeeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

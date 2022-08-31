@@ -10,7 +10,7 @@ using Employees_management.Models;
 
 namespace Employees_management.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/employees")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace Employees_management.Controllers
             _context = context;
         }
 
-        // GET: api/Employees
+        // GET: api/employees
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employees>>> GetEmployees()
         {
@@ -32,7 +32,7 @@ namespace Employees_management.Controllers
             return await _context.Employees.ToListAsync();
         }
 
-        // GET: api/Employees/5
+        // GET: api/employees/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Employees>> GetEmployees(Guid id)
         {
@@ -50,7 +50,7 @@ namespace Employees_management.Controllers
             return employees;
         }
 
-        // PUT: api/Employees/5
+        // PUT: api/employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEmployees(Guid id, Employees employees)
@@ -81,14 +81,14 @@ namespace Employees_management.Controllers
             return NoContent();
         }
 
-        // POST: api/Employees
+        // POST: api/employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("new")]
         public async Task<ActionResult<Employees>> PostEmployees(Employees employees)
         {
           if (_context.Employees == null)
           {
-              return Problem("Entity set 'DataContext.Employees'  is null.");
+              return Problem("There was a problem with the data base.");
           }
             employees.Id = Guid.NewGuid(); 
             _context.Employees.Add(employees);

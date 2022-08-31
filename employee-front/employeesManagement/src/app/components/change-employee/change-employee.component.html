@@ -1,1 +1,34 @@
-<p>change-employee works!</p>
+<div class="container my-5">
+  <h1 class="mb-3">Edit this employee</h1>
+  <div class="row">
+    <div class="col-6">
+    <form [formGroup]="editFormEmployee" (ngSubmit)="editEmployee()" >
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" [(ngModel)]="employeeDetails.name">
+      </div>
+      <div class="mb-3">
+        <label for="mail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="mail" formControlName="email" [(ngModel)]="employeeDetails.email" >
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="number" class="form-control" id="number" formControlName="phone" [(ngModel)]="employeeDetails.phone">
+      </div>
+      <div class="mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input type="number" class="form-control" id="salary" formControlName="salary" [(ngModel)]="employeeDetails.salary">
+      </div>
+      <div class="mb-3">
+        <label for="department" class="form-label">Department</label>
+        <input type="text" class="form-control" id="department" formControlName="department" [(ngModel)]="employeeDetails.department">
+      </div>
+      <button type="submit" class="btn btn-primary" >Edit</button>
+      <button  class="btn btn-danger" (click)="deleteEmployee()" >Delete</button>
+
+    </form>
+
+  </div>
+  </div>
+</div>
+

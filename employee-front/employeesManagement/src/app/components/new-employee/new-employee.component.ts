@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { employeeInterface } from 'src/app/interfaces/employee.interface';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
@@ -8,7 +9,6 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./new-employee.component.scss']
 })
 export class NewEmployeeComponent implements OnInit {
-
 
 
   newFormEmployee = this.fb.group({
@@ -29,4 +29,6 @@ export class NewEmployeeComponent implements OnInit {
         console.log(employee)
        })
   }
+
+
 }

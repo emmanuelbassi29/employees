@@ -13,14 +13,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>adfadf-0001</td>
-      <td>Mark wahlenberg</td>
-      <td>Emma@gmail.com</td>
-      <td>+53 9 2213145775</td>
-      <td>45000</td>
-      <td>Sales</td>
-      <th><a href="">View</a></th>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.phone}}</td>
+      <td>{{employee.salary}}</td>
+      <td>{{employee.department}}</td>
+      <th><a [routerLink]="['edit/' + employee.id]">View</a></th>
 
     </tr>
 
