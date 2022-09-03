@@ -23,4 +23,14 @@ export class EmployeeService {
   getEmployee(id : string): Observable<employeeInterface>{
     return this.http.get<employeeInterface>( this.url + id);
   }
+
+  editEmployee(id : string, employee : employeeInterface): Observable<employeeInterface>{
+    return this.http.put<employeeInterface>( this.url + id, employee );
+  }
+
+  deleteEmployee(id : string): Observable<employeeInterface>{
+    return this.http.delete<employeeInterface>( this.url + id);
+  }
+
+
 }

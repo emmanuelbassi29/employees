@@ -22,6 +22,12 @@ var EmployeeService = /** @class */ (function () {
     EmployeeService.prototype.getEmployee = function (id) {
         return this.http.get(this.url + id);
     };
+    EmployeeService.prototype.editEmployee = function (id, employee) {
+        return this.http.put(this.url + id, employee);
+    };
+    EmployeeService.prototype.deleteEmployee = function (id) {
+        return this.http["delete"](this.url + id);
+    };
     EmployeeService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

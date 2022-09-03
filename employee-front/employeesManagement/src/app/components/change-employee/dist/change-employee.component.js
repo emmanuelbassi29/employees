@@ -9,11 +9,13 @@ exports.__esModule = true;
 exports.ChangeEmployeeComponent = void 0;
 var core_1 = require("@angular/core");
 var ChangeEmployeeComponent = /** @class */ (function () {
-    function ChangeEmployeeComponent(fb, route, employeeService) {
+    function ChangeEmployeeComponent(fb, route, employeeService, router) {
         this.fb = fb;
         this.route = route;
         this.employeeService = employeeService;
+        this.router = router;
         this.editFormEmployee = this.fb.group({
+            id: [''],
             name: [''],
             email: [''],
             phone: [0],
@@ -43,8 +45,19 @@ var ChangeEmployeeComponent = /** @class */ (function () {
         });
     };
     ChangeEmployeeComponent.prototype.editEmployee = function () {
+        var _this = this;
+        this.editFormEmployee.patchValue({
+            id: this.employeeDetails.id
+        });
+        this.employeeService.editEmployee(this.employeeDetails.id, this.editFormEmployee.value).subscribe(function (employee) {
+            _this.router.navigate(['/']);
+        });
     };
     ChangeEmployeeComponent.prototype.deleteEmployee = function () {
+        var _this = this;
+        this.employeeService.deleteEmployee(this.employeeDetails.id).subscribe(function (employee) {
+            _this.router.navigate(['/']);
+        });
     };
     ChangeEmployeeComponent = __decorate([
         core_1.Component({

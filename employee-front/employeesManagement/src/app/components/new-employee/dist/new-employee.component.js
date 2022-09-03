@@ -9,9 +9,10 @@ exports.__esModule = true;
 exports.NewEmployeeComponent = void 0;
 var core_1 = require("@angular/core");
 var NewEmployeeComponent = /** @class */ (function () {
-    function NewEmployeeComponent(fb, employeeService) {
+    function NewEmployeeComponent(fb, employeeService, router) {
         this.fb = fb;
         this.employeeService = employeeService;
+        this.router = router;
         this.newFormEmployee = this.fb.group({
             name: [''],
             email: [''],
@@ -23,9 +24,10 @@ var NewEmployeeComponent = /** @class */ (function () {
     NewEmployeeComponent.prototype.ngOnInit = function () {
     };
     NewEmployeeComponent.prototype.addEmployee = function () {
+        var _this = this;
         console.log(this.newFormEmployee.value);
         this.employeeService.addEmployee(this.newFormEmployee.value).subscribe(function (employee) {
-            console.log(employee);
+            _this.router.navigate(['/']);
         });
     };
     NewEmployeeComponent = __decorate([

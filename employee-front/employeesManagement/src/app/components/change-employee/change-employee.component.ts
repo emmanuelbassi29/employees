@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { employeeInterface } from 'src/app/interfaces/employee.interface';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -12,6 +12,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class ChangeEmployeeComponent implements OnInit {
 
   editFormEmployee = this.fb.group({
+    id:[''],
     name: [''],
     email: [''],
     phone: [0],
@@ -28,7 +29,8 @@ export class ChangeEmployeeComponent implements OnInit {
   department: ""
   }
 
-  constructor( private fb : FormBuilder,private route: ActivatedRoute,private employeeService: EmployeeService) { }
+  constructor( private fb : FormBuilder,private route: ActivatedRoute,private employeeService: EmployeeService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -45,10 +47,19 @@ export class ChangeEmployeeComponent implements OnInit {
 
 
   editEmployee(){
+    this.editFormEmployee.patchValue({
+      id: this.employeeDetails.id
+    })
+    this.employeeService.editEmployee(this.employeeDetails.id,this.editFormEmployee.value).subscribe(employee =>{
+      this.router.navigate(['/'])
 
+    })
   }
 
   deleteEmployee(){
+    this.employeeService.deleteEmployee(this.employeeDetails.id).subscribe(employee =>{
+      this.router.navigate(['/'])
 
+    })
   }
 }
